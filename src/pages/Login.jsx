@@ -6,6 +6,7 @@ function Login() {
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,

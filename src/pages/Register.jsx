@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -85,8 +87,9 @@ function Login() {
             variant="contained"
             color="primary"
             sx={{ borderRadius: 3, marginTop: 3 }}
+            onClick={() => navigate("/login")}
           >
-            Don't Have Account Please Login
+            Already Register please Login
           </Button>
         </Box>
       </form>
