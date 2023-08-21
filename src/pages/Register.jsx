@@ -16,6 +16,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
+    // LocalStorage Logic
+    localStorage.setItem("user", JSON.stringify(inputs));
   };
   return (
     <>
