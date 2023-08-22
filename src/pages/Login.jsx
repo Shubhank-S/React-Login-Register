@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -23,7 +23,7 @@ function Login() {
       inputs.email === loggedUser.email &&
       inputs.password === loggedUser.password
     ) {
-      Navigate("/");
+      navigate("/");
     } else {
       alert("Error");
     }
