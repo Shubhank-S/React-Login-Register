@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
+import { Navigate } from "react-router-dom";
 function Login() {
   const [inputs, setInputs] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -14,9 +14,19 @@ function Login() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+    console.log(loggedUser);
+    if (
+      inputs.email === loggedUser.email &&
+      inputs.password === loggedUser.password
+    ) {
+      Navigate("/");
+    } else {
+      alert("Error");
+    }
   };
   return (
     <>
@@ -40,16 +50,7 @@ function Login() {
           <Typography variant="h4" padding={3} className="heading">
             LOGIN
           </Typography>
-          <TextField
-            placeholder="Name....."
-            value={inputs.name}
-            onChange={handleChange}
-            name="name"
-            margin="normal"
-            type={"text"}
-            className="textfield"
-            required
-          />
+
           <TextField
             placeholder="Email....."
             value={inputs.email}
